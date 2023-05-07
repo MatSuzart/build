@@ -1,6 +1,10 @@
+const BuildRepository = require("../repositories/BuildRepository");
+
 class BuildController {
-    index(request, response){
-        response.send('SEND')
+  async index(request, response){
+        const data = await BuildRepository.findAll();
+
+        response.json();
     }
 
     show(){
