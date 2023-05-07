@@ -11,7 +11,9 @@ const data = [
 
 class BuildRepository {
     findAll(){
-        return data
+        return new Promise((resolve, reject)=>{
+            resolve(data);
+        }); 
     }
 }
 
