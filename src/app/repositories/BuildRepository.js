@@ -15,6 +15,13 @@ class BuildRepository {
             resolve(data);
         }); 
     }
+
+    findById(id){
+        return new Promise((resolve)=>resolve(
+            products.find((products)=> products.id = id),
+        ));
+    }
+    
 }
 
 

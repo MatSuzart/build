@@ -1,3 +1,4 @@
+const { response } = require("express");
 const BuildRepository = require("../repositories/BuildRepository");
 
 class BuildController {
@@ -7,8 +8,16 @@ class BuildController {
         response.json();
     }
 
-    show(){
+    async show(){
+      const { id } = request.params;
 
+      const product = await BuildRepository.findById(id);
+
+      if(!product){
+          return response.status(404).json({error: 'PRODUCT NOT FOUND'});
+      }
+
+      response.json(product);
     }
     store(){
 
@@ -18,8 +27,17 @@ class BuildController {
 
     }
 
-    delete(){
+   async delete(){
+        const { id } = request.params;
 
+        const products = await BuildRepository.findById(id);
+
+        if(!products){
+          return response.status(404).json({error: 'PRODUCT NOT FOUND'});
+        }
+
+        await BuildRepository.delete(id);
+        response.sendStatus(204);
     }
 }
 
