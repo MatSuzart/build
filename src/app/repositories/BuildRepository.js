@@ -22,6 +22,13 @@ class BuildRepository {
         ));
     }
     
+    delete(id){
+        return new Promise((resolve)=>{
+            products = products.filter((products)=>products.id != id);
+
+            resolve();
+        });
+    }
 }
 
 
